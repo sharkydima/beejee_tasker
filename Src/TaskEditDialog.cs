@@ -115,7 +115,7 @@ namespace beejee_Tasker.Src
                 } else
                 {
                     if(editableItem.Status != 1)
-                    {
+                    { //Если предидущий статус был "Completed", то так-же делаем пометку Admin edited.
                         editableItem.Status = 1; //New / Admin edited
                         haveChanges = true;
                     }
@@ -133,21 +133,24 @@ namespace beejee_Tasker.Src
             {
                 createNew = true;
                 editableItem = new TaskData();
-                cbxCompleted.Visibility = ViewStates.Invisible;
-                etUsername.Visibility = ViewStates.Visible;
-                tvUsername.Visibility = ViewStates.Visible;
-                etEmail.Visibility = ViewStates.Visible;
-                tvEmail.Visibility = ViewStates.Visible;
+                cbxCompleted.Enabled = false; 
+                etUsername.Enabled = true;
+                etEmail.Enabled = true;
+
+                etUsername.Text = string.Empty;
+                etEmail.Text = string.Empty;
+                tvEmail.Text = string.Empty;
+                cbxCompleted.Checked = false;
             } 
             else //Редактирование...
             {
                 createNew = false;
                 editableItem = item;
-                cbxCompleted.Visibility = ViewStates.Visible;
-                etUsername.Visibility = ViewStates.Invisible;
-                tvUsername.Visibility = ViewStates.Invisible;
-                etEmail.Visibility = ViewStates.Invisible;
-                tvEmail.Visibility = ViewStates.Invisible;
+                cbxCompleted.Enabled = true;
+                etUsername.Enabled = false;
+                etEmail.Enabled = false;
+                etUsername.Text = editableItem.Username;
+                etEmail.Text = editableItem.Email;
                 etTaskText.Text = editableItem.Text;
                 cbxCompleted.Checked = editableItem.Status >= 9;
             }
