@@ -106,7 +106,7 @@ namespace beejee_Tasker.Src
                 {
                     if(editableItem.Status != 9)
                     {
-                        if (haveChanges) //Если текст был изменен, то ставим признак что таск завершен и отредактирован
+                        if (haveChanges || editableItem.Status == 1) //Если текст был изменен (в т.ч. ранее), то ставим признак что таск завершен и отредактирован
                             editableItem.Status = 9; //Completed / Admin edited
                         else
                             editableItem.Status = 10; //Completed
