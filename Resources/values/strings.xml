@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Tasker</string>
+    <string name="action_auth">Auth</string>
+    <string name="action_logoff">Logoff</string>
+</resources>
